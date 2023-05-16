@@ -26,6 +26,7 @@ import {
   WaitForOptions,
 } from '../../api/Page.js';
 import {isErrorLike} from '../../util/ErrorLike.js';
+import {isTargetClosedError} from '../Connection.js';
 import {ConsoleMessage, ConsoleMessageLocation} from '../ConsoleMessage.js';
 import {EventType, Handler} from '../EventEmitter.js';
 import {FrameManagerEmittedEvents} from '../FrameManager.js';
@@ -112,7 +113,7 @@ export class Page extends PageBase {
         contexts: [info.context],
       })
       .catch(error => {
-        if (isErrorLike(error) && !error.message.includes('Target closed')) {
+        if (isErrorLike(error) && isTargetClosedError(error)) {
           throw error;
         }
       });

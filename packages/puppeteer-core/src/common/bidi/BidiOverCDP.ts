@@ -19,6 +19,7 @@ import * as Bidi from 'chromium-bidi/lib/cjs/protocol/protocol.js';
 import type {ProtocolMapping} from 'devtools-protocol/types/protocol-mapping.js';
 
 import {CDPSession, Connection as CDPPPtrConnection} from '../Connection.js';
+import {TargetCloseError} from '../Errors.js';
 import {Handler} from '../EventEmitter.js';
 
 import {Connection as BidiPPtrConnection} from './Connection.js';
@@ -97,6 +98,10 @@ class CDPConnectionAdapter {
     for (const adapter of this.#adapters.values()) {
       adapter.close();
     }
+  }
+
+  isCloseError(error: any): boolean {
+    return error instanceof TargetCloseError;
   }
 }
 
