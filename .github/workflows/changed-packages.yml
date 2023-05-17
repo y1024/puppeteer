@@ -42,6 +42,7 @@ jobs:
               - 'test-d/**'
               - 'tools/mochaRunner/**'
               - '.mocharc.cjs'
+              - 'tsconfig.base.json'
             website:
               - '.github/workflows/ci.yml'
               - 'docs/**'
@@ -50,6 +51,8 @@ jobs:
             ng-schematics:
               - '.github/workflows/ci.yml'
               - 'packages/ng-schematics/**'
+              - 'tsconfig.base.json'
             browsers:
               - '.github/workflows/ci.yml'
               - 'packages/browsers/**'
+              - 'tsconfig.base.json'
