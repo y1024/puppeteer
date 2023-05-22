@@ -110,13 +110,20 @@ export class Page extends PageBase {
     ],
   ]);
 
-  constructor(connection: Connection, info: Bidi.BrowsingContext.Info) {
+  constructor(
+    connection: Connection,
+    info: Bidi.BrowsingContext.CreateResult['result']
+  ) {
     super();
     this.#connection = connection;
 
     this.#networkManager = new NetworkManager(connection, this);
 
-    this.#handleFrameTree(info);
+    this.#handleFrameTree({
+      ...info,
+      url: '',
+      children: [],
+    });
 
     for (const [event, subscriber] of this.#networkManagerEvents) {
       this.#networkManager.on(event, subscriber);
@@ -125,7 +132,7 @@ export class Page extends PageBase {
 
   static async _create(
     connection: Connection,
-    info: Bidi.BrowsingContext.Info
+    info: Bidi.BrowsingContext.CreateResult['result']
   ): Promise<Page> {
     const page = new Page(connection, info);
 
