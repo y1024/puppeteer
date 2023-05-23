@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file. See [standa
   * dependencies
     * @puppeteer/browsers bumped from 1.0.1 to 1.1.0
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @puppeteer/browsers bumped from 1.3.0 to 1.4.0
+
 ## [20.3.0](https://github.com/puppeteer/puppeteer/compare/puppeteer-core-v20.2.1...puppeteer-core-v20.3.0) (2023-05-22)
 
 
